@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creative Brief Generator</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Creative Brief Generator</h1>
+
+    <form id="brief-form">
+        <label for="batch-number">1. Batch number?</label>
+        <input type="text" id="batch-number" required><br>
+
+        <label for="product">2. Which product is this for?</label>
+        <input type="text" id="product" required><br>
+
+        <label for="inspiration-advert">3. Inspiration advert?</label>
+        <input type="text" id="inspiration-advert" required><br>
+
+        <label for="creative-notes">4. Creative notes?</label>
+        <textarea id="creative-notes" rows="4" required></textarea><br>
+
+        <label for="thumbnails">5. Thumbnails? Y/N</label>
+        <input type="text" id="thumbnails" required><br>
+
+        <label for="format">6. Format?</label>
+        <input type="text" id="format" required><br>
+
+        <label for="copy-doc">7. Copy Doc?</label>
+        <input type="text" id="copy-doc" required><br>
+
+        <button type="button" onclick="generateBrief()">Generate Brief</button>
+    </form>
+
+    <div id="brief-result">
+        <h2>Summary:</h2>
+        <p id="summary-text"></p>
+    </div>
+
+    <script>
+        function generateBrief() {
+            const batchNumber = document.getElementById("batch-number").value;
+            const product = document.getElementById("product").value;
+            const inspirationAdvert = document.getElementById("inspiration-advert").value;
+            const creativeNotes = document.getElementById("creative-notes").value;
+            const thumbnails = document.getElementById("thumbnails").value;
+            const format = document.getElementById("format").value;
+            const copyDoc = document.getElementById("copy-doc").value;
+
+            const summaryText = `
+            Create a video ad for ${product} inspired by "${inspirationAdvert}".
+
+            Creative Notes:
+            ${creativeNotes}
+
+            Format required is ${format} and thumbnails are ${thumbnails === 'Y' ? 'required' : 'not required'}.
+
+            Copy doc for the advert is below:
+            ${copyDoc}
+            `;
+
+            document.getElementById("summary-text").textContent = summaryText;
+        }
+    </script>
+</body>
+</html>
